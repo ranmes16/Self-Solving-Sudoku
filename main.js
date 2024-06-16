@@ -16,6 +16,7 @@ for (let i = 0; i < SIZE; i++) {
 
 const values = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
 
+// Function to check if a number can be placed in a specific position
 function canPlaceNumber(values, row, col, num) {
   for (let j = 0; j < SIZE; j++) {
     if (values[row][j] === num) return false;
@@ -36,6 +37,7 @@ function canPlaceNumber(values, row, col, num) {
   return true;
 }
 
+// Function to initialize the Sudoku grid
 function initializeGrid() {
   inputs.forEach((input) => {
     input.value = "";
@@ -71,12 +73,15 @@ function initializeGrid() {
   console.log(values);
 }
 
+// Function to change the value of an input element
 const change = (value, empty) => {
   inputs2D[empty[0]][empty[1]].value = value;
 };
 
+// Function to create a delay
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Function to find an empty space in the Sudoku grid
 const findEmptySpace = () => {
   for (let i = 0; i < SIZE; i++) {
     for (let j = 0; j < SIZE; j++) {
@@ -87,6 +92,8 @@ const findEmptySpace = () => {
   }
   return null;
 };
+
+// Solver function for the Sudoku puzzle
 const solver = async () => {
   const empty = findEmptySpace();
   if (empty === null) {
@@ -166,6 +173,7 @@ for (let i = 0; i < SIZE; i++) {
   }
 }
 
+// Event listener for the "solve" button
 document.getElementById("solve").addEventListener("click", async () => {
   disableInputs();
   newGame.disabled = true;
@@ -180,6 +188,7 @@ document.getElementById("solve").addEventListener("click", async () => {
   }
 });
 
+// Function to disable all input elements
 const disableInputs = () => {
   inputs2D.forEach((row) => {
     row.forEach((input) => {
@@ -188,6 +197,7 @@ const disableInputs = () => {
   });
 };
 
+// Function to clear the input elements on the screen
 const clearScreen = () => {
   inputs2D.forEach((row) => {
     row.forEach((input) => {
@@ -196,6 +206,7 @@ const clearScreen = () => {
   });
 };
 
+// Function to enable all input elements
 const enableInputs = () => {
   inputs.forEach((input) => {
     if (!input.value) {
@@ -204,6 +215,7 @@ const enableInputs = () => {
   });
 };
 
+// Function to clear all input values in the grid
 const clearInputs = () => {
   for (let i = 0; i < SIZE; i++) {
     for (let j = 0; j < SIZE; j++) {
@@ -212,6 +224,7 @@ const clearInputs = () => {
   }
 };
 
+// Function to reset the game and start a new one
 const gameEnded = () => {
   clearScreen();
   clearInputs();
@@ -223,12 +236,14 @@ initializeGrid();
 
 console.log(values);
 
+// Event listener for the "new game" button
 newGame.addEventListener("click", () => {
   if (!newGame.disabled) {
     gameEnded();
   }
 });
 
+// Function to check the solution of the Sudoku puzzle
 const checkSolution = (values, row, col, num) => {
   if (num == 0) return false;
 
@@ -254,10 +269,12 @@ const checkSolution = (values, row, col, num) => {
   return true;
 };
 
+// Event listener for the "check solution" button
 checksSolution.addEventListener("click", () => {
   if (!checksSolution.disabled) isSolved();
 });
 
+// Function to verify if the Sudoku puzzle is solved correctly
 const isSolved = () => {
   let isSolved = true;
   for (let i = 0; i < SIZE; i++) {
