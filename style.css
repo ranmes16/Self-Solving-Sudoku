@@ -1,0 +1,125 @@
+/* Reset default browser styles */
+body,
+h1,
+div,
+input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2.5em;
+}
+
+.allbtn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  font-size: 1em;
+}
+
+.btn:hover {
+  background-color: #ff4c4c;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+}
+
+.boardSection {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  outline: none;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  -moz-appearance: textfield;
+}
+
+.input:hover {
+  border-color: #888;
+}
+
+.input:focus {
+  border-color: #59f196;
+  box-shadow: 0 0 5px rgba(80, 192, 82, 0.8);
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.redFlash {
+  animation: redflash 0.1s infinite;
+}
+
+.greenFlash {
+  animation: greenflash 0.1s infinite;
+}
+
+@keyframes redflash {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(236, 102, 102, 0.563);
+  }
+}
+
+@keyframes greenflash {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(105, 237, 105, 0.511);
+  }
+}
